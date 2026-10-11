@@ -1,0 +1,11 @@
+
+create-pages:
+  stage: deploy
+  script:
+    - mkdir -p public
+    - cp -r index.html public/
+    - if [ -d css ]; then cp -r css public/; fi
+    - if [ -f style.css ]; then cp style.css public/; fi
+  pages: true
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
